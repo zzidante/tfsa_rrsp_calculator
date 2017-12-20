@@ -28,6 +28,8 @@ footer a:hover {
 form {
   width: 50%;
   margin: 0 auto;
+  background: lightskyblue;
+  border-radius: 6px;
 }
 
 #top-header {
@@ -39,7 +41,7 @@ form {
 }
 #top-main {
   flex: 1 0 auto; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
-  padding: 20px;
+  padding: 0;
 }
 
 /* Reference: https://css-tricks.com/couple-takes-sticky-footer/ */
@@ -57,4 +59,37 @@ form {
 
 .fa:hover {
   color: rgb(72, 23, 77);  
+}
+
+  /* reset bootstrap positioning */
+.col {
+  height: 120px;
+}
+
+.form-row {
+  margin: 0;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+#financial-calculator .col {
+  position: relative;
+}
+
+#financial-calculator label {
+  position: absolute;
+  bottom: 32px;
+}
+
+#financial-calculator input {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#financial-calculator-submit {
+  margin: 30px 0;
 }

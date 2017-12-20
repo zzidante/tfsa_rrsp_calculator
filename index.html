@@ -36,30 +36,38 @@
   <main id="top-main">
     <h4>Enter Your Details</h4>
 
-    <form>
+    <form id="financial-calculator">
       <div class="form-row">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Tax Rate">
+            <label>Deposit ($)</label>            
+          <input type="text" class="form-control" placeholder="Amount to Invest">
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="ROI">
+          <label>Return on Investment (%)</label>
+          <input type="text" class="form-control" placeholder="Interest Rate">
         </div>
         <div class="col">
-          <input type="text" class="form-control" placeholder="Inflation">
+          <label>Years to Invest (#)</label>            
+          <input type="text" class="form-control" placeholder="Years">
         </div>
       </div>
       <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Tax Rate">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="ROI">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Inflation">
-          </div>
+        <div class="col">
+          <label>Marginal Tax Rate (%)</label>              
+          <input type="text" class="form-control" placeholder="Current Tax Rate">
         </div>
-      <button type="submit" class="btn btn-primary">Submit</button>        
+        <div class="col">
+          <label>Retirement Tax Rate (%)</label>              
+          <input type="text" class="form-control" placeholder="Retirement Tax Rate">
+        </div>
+        <div class="col">
+          <label>Inflation Rate (%)</label>              
+          <input type="text" class="form-control" placeholder="Inflation">
+        </div>
+      </div>
+      <div class="btn-div">
+        <button type="submit" id="financial-calculator-submit" class="btn btn-primary">Compare Investments</button>  
+      </div>       
     </form>
 
   </main>
