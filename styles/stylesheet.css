@@ -25,6 +25,11 @@ footer a:hover {
   text-decoration: none;
 }
 
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+
 #top-header {
   display:flex;
   align-items: center;
