@@ -27,16 +27,35 @@ footer a:hover {
 
 form {
   width: 50%;
-  margin: 0 auto;
-  background: lightskyblue;
+  margin: 20px auto 0 auto;
+  background: ghostwhite;
+  border: solid 2px lightslategray;
   border-radius: 6px;
+}
+
+form h4 {
+  margin: 0 auto;
+  padding-top:20px;
+  text-align: center;
+}
+
+#financial-calculator .form-row div:nth-child(1) {
+  margin-left: 5px;
+}
+
+#financial-calculator .form-row div:nth-child(2) {
+  margin: 0 5px;
+}
+
+#financial-calculator .form-row div:nth-child(3) {
+  margin-right: 5px;
 }
 
 #top-header {
   display:flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
+  min-height: 75px;
   background: #624874;
 }
 #top-main {
@@ -44,35 +63,12 @@ form {
   padding: 0;
 }
 
-/* Reference: https://css-tricks.com/couple-takes-sticky-footer/ */
 #top-footer {
+  /* Reference: https://css-tricks.com/couple-takes-sticky-footer/ */
   flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
   padding: 20px;
   font-size: 1.5em;
   color: rgb(125, 0, 136);  
-}
-
-.fa {
-  font-size: 1em;
-  color: rgb(125, 0, 136);
-}
-
-.fa:hover {
-  color: rgb(72, 23, 77);  
-}
-
-  /* reset bootstrap positioning */
-.col {
-  height: 120px;
-}
-
-.form-row {
-  margin: 0;
-}
-
-.btn-div {
-  display: flex;
-  justify-content: center;
 }
 
 #financial-calculator .col {
@@ -90,6 +86,33 @@ form {
   right: 0;
 }
 
-#financial-calculator-submit {
+#financial-calculator-btn {
   margin: 30px 0;
 }
+
+.fa {
+  font-size: 1em;
+  color: rgb(125, 0, 136);
+}
+
+.fa:hover {
+  color: rgb(72, 23, 77);  
+}
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+}
+  /* reset bootstrap autos */
+  .col {
+    height: 120px;
+  }
+  
+  .form-row {
+    margin: 0;
+  }
+
+  .btn-primary {
+    background: #624874;
+    border-color: #624874;
+  }

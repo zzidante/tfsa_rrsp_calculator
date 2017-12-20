@@ -34,41 +34,44 @@
   </header>
 
   <main id="top-main">
-    <h4>Enter Your Details</h4>
 
     <form id="financial-calculator">
+      <h4>Enter Your Details</h4>        
       <div class="form-row">
         <div class="col">
-            <label>Deposit ($)</label>            
-          <input type="text" class="form-control" placeholder="Amount to Invest">
+          <label>Deposit</label>            
+          <input type="text" class="form-control" placeholder=" ($) Amount to Invest">
         </div>
         <div class="col">
-          <label>Return on Investment (%)</label>
-          <input type="text" class="form-control" placeholder="Interest Rate">
+          <label>Return on Investment</label>
+          <input type="text" class="form-control" placeholder=" (%) Interest Rate">
         </div>
         <div class="col">
-          <label>Years to Invest (#)</label>            
-          <input type="text" class="form-control" placeholder="Years">
+          <label>Years to Invest</label>            
+          <input type="text" class="form-control" placeholder=" (#) Years">
         </div>
       </div>
       <div class="form-row">
         <div class="col">
-          <label>Marginal Tax Rate (%)</label>              
-          <input type="text" class="form-control" placeholder="Current Tax Rate">
+          <label>Marginal Tax Rate</label>              
+          <input type="text" class="form-control" placeholder=" (%) M. Tax Rate">
         </div>
         <div class="col">
-          <label>Retirement Tax Rate (%)</label>              
-          <input type="text" class="form-control" placeholder="Retirement Tax Rate">
+          <label>Retirement Tax Rate</label>              
+          <input type="text" class="form-control" placeholder=" (%) R. Tax Rate">
         </div>
         <div class="col">
-          <label>Inflation Rate (%)</label>              
-          <input type="text" class="form-control" placeholder="Inflation">
+          <label>Inflation Rate</label>              
+          <input type="text" class="form-control" placeholder=" (%) Inflation Rate">
         </div>
       </div>
       <div class="btn-div">
-        <button type="submit" id="financial-calculator-submit" class="btn btn-primary">Compare Investments</button>  
+        <button type="submit" id="financial-calculator-btn" class="btn btn-primary">Compare Investments</button>  
       </div>       
     </form>
+
+    <section id="results-container">
+    </section>
 
   </main>
 
