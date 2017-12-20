@@ -16,6 +16,5 @@ $(function() {
     inflationRate: 0.03,
   }
 
-  // actions.addResults(resultsContainer);
   console.log(equations.afterTaxDeposit(testData))
 });
