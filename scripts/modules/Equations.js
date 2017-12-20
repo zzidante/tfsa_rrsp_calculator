@@ -4,4 +4,3 @@ module.exports = {
   rrspTaxAmount: function() { return 10.10 },
   tsfaAfterTaxFutureValue: function() { return 22.11 },
 };
-
