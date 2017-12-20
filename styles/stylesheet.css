@@ -16,6 +16,15 @@ h1 {
   text-align: center;
 }
 
+footer a {
+  color: rgb(125, 0, 136);
+}
+
+footer a:hover {
+  color: rgb(72, 23, 77);  
+  text-decoration: none;
+}
+
 #top-header {
   display:flex;
   align-items: center;
@@ -39,4 +48,8 @@ h1 {
 .fa {
   font-size: 1em;
   color: rgb(125, 0, 136);
+}
+
+.fa:hover {
+  color: rgb(72, 23, 77);  
 }
