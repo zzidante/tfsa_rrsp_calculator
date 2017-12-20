@@ -8,26 +8,22 @@ window.__equations = (function () {
     // marginalTaxRate = float
     // retireTaxRate = float
     // inflationRate = float
-   
+    
   var __equations = {
-    afterTaxDeposit: function (userInput) {
-      var equat;
-      if (userInput.account === "tfsa") {
-        equat = userInput.depositAmount
-      } else {
-        equat = userInput.depositAmount - (userInput.depositAmount * userInput.marginalTaxRate);
-      }
-      return equat;
+    afterTaxDeposit: function (acc, deposit, taxRate) {
+    return acc === "rrsp" ? 
+      deposit : 
+      deposit - (deposit * taxRate);
     },
     futureValue: function (userInput) {
-      var equat;
-      if (userInput.account === "tfsa") {
-        equat = userInput.depositAmount
-      } else {
-        equat = userInput.depositAmount - (userInput.depositAmount * userInput.marginalTaxRate);
-      }
-      return equat;
+      return userInput.depositAmount * ((1 + (userInput.interestRate - userInput.inflationRate))**userInput.yearsToInvest);
     },
+    rrspTaxAmount: function (userInput) {
+      return userInput.depositAmount * ((1 + (userInput.interestRate - userInput.inflationRate))**userInput.yearsToInvest);
+    },
+    tsfaAfterTaxFutureValue: function (userInput) {
+      return userInput.depositAmount * ((1 + (userInput.interestRate - userInput.inflationRate))**userInput.yearsToInvest);
+    }
   };
   return __equations;
 }());
