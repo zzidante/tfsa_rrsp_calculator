@@ -28,14 +28,27 @@ $(function() {
     return account[userKey];
   };
 
-  function getFormObj(form) {
+  function formatFormObj(form) {
     var formObj = {};
     $.each(form, function (i, input) {
         formObj[input.name] = input.value;
     });
     console.log(formObj); 
-    return formObj;
-  }
+    return turnValIntoPercent(formObj);
+  };
+
+  function turnValIntoPercent(formObj) {
+    var formattedObj = {}
+    $.each(formObj, function( key, value ) {
+      var valToPercent = value / 100;      
+      if (key !== 'depositAmount') {
+        formattedObj[key] = valToPercent;
+      } else {
+        formattedObj[key] = valToPercent;
+      }
+    });
+    return formattedObj;
+  };
 
   // async executables for computations
   function updateTfsaDeposit(user) {
@@ -106,9 +119,9 @@ $(function() {
 
   // form commands
   form.submit(function(event) {
-    var userInput = $( this ).serializeArray()
+    var userInput = $(this).serializeArray();
+    var userData = formatFormObj(userInput); 
     event.preventDefault();
-    var userData = getFormObj(userInput);
     runFinalComputation(userData);
     form.addClass("hide");
   });
