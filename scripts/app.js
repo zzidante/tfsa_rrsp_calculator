@@ -50,7 +50,6 @@ $(function() {
   };
 
   // jQuery executables
-
   function lookupKeyValueResponse(objKey) {
     if (objKey === 'depositAmount') {
       return "Your original RRSP deposit is $";
@@ -95,5 +94,11 @@ $(function() {
 
     renderAllInformation(user);
   };
-  runFinalComputation(testData);
+
+  // form commands
+  form.submit(function(event) {
+    event.preventDefault();
+    runFinalComputation(testData);
+    formButton.addClass("hide");
+  });
 });

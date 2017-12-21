@@ -107,6 +107,10 @@ form h4 {
 .finance-calc-result {
   text-align: center; 
 }
+
+.hide {
+  display: none;
+}
   /* reset bootstrap autos */
   .col {
     height: 120px;
