@@ -1,28 +1,17 @@
-window.__equations = (function () {
-
-  // userInput is an object, takes in...
-    // account = tfsa || rrsp
-    // depositAmount = integer
-    // interestRate = float
-    // yearsToInvest = integer
-    // marginalTaxRate = float
-    // retireTaxRate = float
-    // inflationRate = float
-    
+// Reference: https://code.tutsplus.com/tutorials/build-your-first-javascript-library--net-26796 
+window.__equations = (function () {    
   var __equations = {
-    afterTaxDeposit: function (acc, deposit, taxRate) {
-    return acc === "rrsp" ? 
-      deposit : 
-      deposit - (deposit * taxRate);
+    afterTaxDeposit: function (deposit, taxRate) {
+    return deposit + (deposit * taxRate);
     },
-    futureValue: function (userInput) {
-      return userInput.depositAmount * ((1 + (userInput.interestRate - userInput.inflationRate))**userInput.yearsToInvest);
+    futureValue: function (deposit, interestRate, inflationRate, yearsToInvest) {
+      return deposit * ((1 + (interestRate - inflationRate))**yearsToInvest);
     },
-    rrspTaxAmount: function (userInput) {
-      return userInput.depositAmount * ((1 + (userInput.interestRate - userInput.inflationRate))**userInput.yearsToInvest);
+    rrspTaxAmount: function (futureValue, retireTaxRate) {
+      return futureValue * retireTaxRate;
     },
-    tsfaAfterTaxFutureValue: function (userInput) {
-      return userInput.depositAmount * ((1 + (userInput.interestRate - userInput.inflationRate))**userInput.yearsToInvest);
+    getRrspAfterTaxFv: function (futureValue, retireTaxRate) {
+      return futureValue - (futureValue * retireTaxRate);
     }
   };
   return __equations;
