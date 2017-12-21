@@ -38,23 +38,23 @@ $(function() {
 
   // executables for computations
   function updateTfsaDeposit(user) {
-    return equations.afterTaxDeposit(user.depositAmount, user.marginalTaxRate);
+    return parseFloat(equations.afterTaxDeposit(user.depositAmount, user.marginalTaxRate));
   };
 
   function getFvTfsa(user) {
-    return equations.futureValue(user.depositAmount, user.interestRate, user.inflationRate, user.yearsToInvest);
+    return parseFloat(equations.futureValue(user.depositAmount, user.interestRate, user.inflationRate, user.yearsToInvest));
   };
 
   function getFvRrsp(user) {
-    return equations.futureValue(user.depositAmount, user.interestRate, user.inflationRate, user.yearsToInvest);
+    return parseFloat(equations.futureValue(user.depositAmount, user.interestRate, user.inflationRate, user.yearsToInvest));
   };
 
   function getRrspTaxAmount(user) {
-    return equations.rrspTaxAmount(user.fvRrsp, user.retireTaxRate);
+    return parseFloat(equations.rrspTaxAmount(user.fvRrsp, user.retireTaxRate));
   };
 
   function getRrspAfterTaxFv(user) {
-    return equations.getRrspAfterTaxFv(user.fvRrsp, user.retireTaxRate);
+    return parseFloat(equations.getRrspAfterTaxFv(user.fvRrsp, user.retireTaxRate));
   };
 
   // jQuery executables
