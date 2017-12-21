@@ -12,6 +12,12 @@ Users can compare the future savings potential of a TFSA and RRSP to improve dec
 
 ## Run Instructions
 
+### App
+
+* download project
+* open ```index.html``` in browser
+
+### Testing
 * Install Dependencies
   ``` npm install ```
 * Run tests
