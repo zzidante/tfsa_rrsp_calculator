@@ -63,34 +63,51 @@ $(function() {
       return "Years investing: ";
     } else if (objKey === 'depositAmount') {
       return "Your original RRSP deposit is $";
-    } else if (objKey === 'depositAmount') {
-      return "Your total TFSA deposit after tax is $";
     } else if (objKey === 'tfsaDeposit') {
-      return "Your total TFSA deposit (before tax deducation) is $";
+      return "To match your RRSP contribution, your total TFSA deposit (before tax deducation) is $";
     } else if (objKey === 'fvTfsa') {
       return "The Future Value of your TFSA is $";
     } else if (objKey === 'fvRrsp') {
       return "The Future Value of your RRSP is $";
     } else if (objKey === 'taxRrsp') {
-      return "The taxes paid on your RRSP during retirement are $";
+      return "The tax paid on your RRSP during retirement is $";
     } else if (objKey === 'afterTaxFvRrsp') {
-      return "The total take-home amount of your RRSP's are $";
+      return "The total take-home amount of your RRSP is $";
+    } else if (objKey === 'fvTfsaTotalPrompt') {
+      return "The total take-home amount of your TFSA is $";
     } else {
       return false;
     }
   }
 
   function renderResults(userInfo) {
-    userInfo.forEach(function(value, i) {
-      resultsContainer.append(value);
-    });
-  }
+    var deposit = userInfo.depositAmount;
+    var yearsToInvest = userInfo.yearsToInvest;
+    var tfsaDeposit = userInfo.tfsaDeposit;
+    var fvTfsa = userInfo.fvTfsa;
+    var fvRrsp = userInfo.fvRrsp;
+    var afterTaxFvRrsp = userInfo.afterTaxFvRrsp;
+    var taxRrsp = userInfo.taxRrsp;
+    var fvTfsaTotalPrompt = userInfo.fvTfsaTotalPrompt;
+
+    resultsContainer
+      .append(yearsToInvest)
+      .append(deposit)
+      .append(tfsaDeposit)
+      .append(fvRrsp)
+      .append(fvTfsa)
+      .append(taxRrsp)
+      .append(afterTaxFvRrsp)
+      .append(fvTfsaTotalPrompt);
+
+
+  };
 
   function renderAllInformation(user) {
-    var userInfo = [];
+    var userInfo = {};
     $.each(user, function(key, value) {
       if (lookupKeyValueResponse(key)) {
-        userInfo.push('<p class="finance-calc-result">' + lookupKeyValueResponse(key) + value + '</p>');
+        userInfo[key] = ('<p class="finance-calc-result">' + lookupKeyValueResponse(key) + value + '</p>');
       }
     });
     renderResults(userInfo);
@@ -108,6 +125,7 @@ $(function() {
     updateAccount(user, "fvRrsp", getFvRrsp(user));
     updateAccount(user, "taxRrsp", getRrspTaxAmount(user));
     updateAccount(user, "afterTaxFvRrsp", getRrspAfterTaxFv(user));
+    updateAccount(user, "fvTfsaTotalPrompt", user.fvTfsa);
 
     renderAllInformation(user);
   };
