@@ -42,7 +42,7 @@ $(function() {
   };
 
   function getFvTfsa(user) {
-    return equations.futureValue(user.tfsaDeposit, user.interestRate, user.inflationRate, user.yearsToInvest);
+    return equations.futureValue(user.depositAmount, user.interestRate, user.inflationRate, user.yearsToInvest);
   };
 
   function getFvRrsp(user) {
@@ -62,7 +62,9 @@ $(function() {
     if (objKey === 'depositAmount') {
       return "Your original RRSP deposit is $";
     } else if (objKey === 'tfsaDeposit') {
-      return "Your total TFSA deposit (before tax) is $";
+      return "Your total TFSA deposit (before tax deducation) is $";
+    } else if (objKey === 'afterTaxTfsaDeposit') {
+      return "Your total TFSA deposit after tax is $";
     } else if (objKey === 'fvTfsa') {
       return "The Future Value of your TFSA is $";
     } else if (objKey === 'fvRrsp') {
@@ -106,6 +108,7 @@ $(function() {
     updateAccount(user, "afterTaxFvRrsp", getRrspAfterTaxFv(user));
 
     renderAllInformation(user);
+    console.log(user);
   };
 
   // form handling
@@ -115,6 +118,5 @@ $(function() {
     runFinalComputation(userData);
     form.addClass("hide");
     addRefreshButton(resultsContainer);
-
   });
 });
