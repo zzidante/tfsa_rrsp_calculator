@@ -28,6 +28,15 @@ $(function() {
     return account[userKey];
   };
 
+  function getFormObj(form) {
+    var formObj = {};
+    $.each(form, function (i, input) {
+        formObj[input.name] = input.value;
+    });
+    console.log(formObj); 
+    return formObj;
+  }
+
   // async executables for computations
   function updateTfsaDeposit(user) {
     return equations.afterTaxDeposit(user.depositAmount, user.marginalTaxRate);
@@ -97,8 +106,10 @@ $(function() {
 
   // form commands
   form.submit(function(event) {
+    var userInput = $( this ).serializeArray()
     event.preventDefault();
-    runFinalComputation(testData);
+    var userData = getFormObj(userInput);
+    runFinalComputation(userData);
     form.addClass("hide");
   });
 });
