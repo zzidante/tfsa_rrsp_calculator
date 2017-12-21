@@ -99,6 +99,6 @@ $(function() {
   form.submit(function(event) {
     event.preventDefault();
     runFinalComputation(testData);
-    formButton.addClass("hide");
+    form.addClass("hide");
   });
 });
