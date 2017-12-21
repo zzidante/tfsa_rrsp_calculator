@@ -38,13 +38,15 @@ $(function() {
   };
 
   function turnValIntoPercent(formObj) {
-    var formattedObj = {}
-    $.each(formObj, function( key, value ) {
-      var valToPercent = value / 100;      
-      if (key !== 'depositAmount') {
-        formattedObj[key] = valToPercent;
+    var formattedObj = {};
+    $.each(formObj, function(objKey, value) {
+      var valToPercent = value / 100;     
+      if (objKey === "depositAmount") {
+        formattedObj[objKey] = value;
+      } else if (objKey === "yearsToInvest") {
+        formattedObj[objKey] = value;
       } else {
-        formattedObj[key] = valToPercent;
+        formattedObj[objKey] = valToPercent;
       }
     });
     return formattedObj;
