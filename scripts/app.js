@@ -59,12 +59,14 @@ $(function() {
 
   // jQuery executables
   function lookupKeyValueResponse(objKey) {
-    if (objKey === 'depositAmount') {
+    if (objKey === 'yearsToInvest') {
+      return "Years investing: ";
+    } else if (objKey === 'depositAmount') {
       return "Your original RRSP deposit is $";
+    } else if (objKey === 'depositAmount') {
+      return "Your total TFSA deposit after tax is $";
     } else if (objKey === 'tfsaDeposit') {
       return "Your total TFSA deposit (before tax deducation) is $";
-    } else if (objKey === 'afterTaxTfsaDeposit') {
-      return "Your total TFSA deposit after tax is $";
     } else if (objKey === 'fvTfsa') {
       return "The Future Value of your TFSA is $";
     } else if (objKey === 'fvRrsp') {
@@ -108,7 +110,6 @@ $(function() {
     updateAccount(user, "afterTaxFvRrsp", getRrspAfterTaxFv(user));
 
     renderAllInformation(user);
-    console.log(user);
   };
 
   // form handling
