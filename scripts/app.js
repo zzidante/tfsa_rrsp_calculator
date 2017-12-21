@@ -7,21 +7,6 @@ $(function() {
   var formButton = $('#financial-calculator-btn');
   var resultsContainer = $('#results-container');
 
-  var testData = {
-    depositAmount: 100, 
-    interestRate: 0.06,
-    yearsToInvest: 40,
-    marginalTaxRate: 0.4,
-    retireTaxRate: 0.4,
-    inflationRate: 0.05,
-
-    tfsaDeposit: 0,
-    fvTfsa: 0,
-    fvRrsp: 0,
-    taxRrsp: 0,
-    afterTaxFvRrsp: 0
-  };
-
   // datahelper functions 
   function updateAccount(account, userKey, update) {
     account[userKey] = update;
@@ -31,9 +16,8 @@ $(function() {
   function formatFormObj(form) {
     var formObj = {};
     $.each(form, function (i, input) {
-        formObj[input.name] = input.value;
+      formObj[input.name] = input.value;
     });
-    console.log(formObj); 
     return turnValIntoPercent(formObj);
   };
 
@@ -42,17 +26,17 @@ $(function() {
     $.each(formObj, function(objKey, value) {
       var valToPercent = value / 100;     
       if (objKey === "depositAmount") {
-        formattedObj[objKey] = value;
+        formattedObj[objKey] = parseInt(value);
       } else if (objKey === "yearsToInvest") {
-        formattedObj[objKey] = value;
+        formattedObj[objKey] = parseInt(value);
       } else {
-        formattedObj[objKey] = valToPercent;
+        formattedObj[objKey] = parseFloat(valToPercent);
       }
     });
     return formattedObj;
   };
 
-  // async executables for computations
+  // executables for computations
   function updateTfsaDeposit(user) {
     return equations.afterTaxDeposit(user.depositAmount, user.marginalTaxRate);
   };
@@ -92,20 +76,24 @@ $(function() {
     }
   }
 
-  function renderResults(user) {
-    user.forEach(function(value, index) {
+  function renderResults(userInfo) {
+    userInfo.forEach(function(value, i) {
       resultsContainer.append(value);
     });
   }
 
   function renderAllInformation(user) {
     var userInfo = [];
-    $.each(user, function( key, value ) {
+    $.each(user, function(key, value) {
       if (lookupKeyValueResponse(key)) {
         userInfo.push('<p class="finance-calc-result">' + lookupKeyValueResponse(key) + value + '</p>');
       }
     });
     renderResults(userInfo);
+  };
+
+  function addRefreshButton(resultsContainer) {
+    return resultsContainer.append("<div class='btn-div'><input class='btn btn-primary' type='button' value='Make a New Calculation' onClick='window.location.href=window.location.href'></div.>")
   }
 
   // run operations in order...
@@ -119,12 +107,13 @@ $(function() {
     renderAllInformation(user);
   };
 
-  // form commands
-  form.submit(function(event) {
-    var userInput = $(this).serializeArray();
-    var userData = formatFormObj(userInput); 
+  // form handling
+  form.submit(function() {
+    var userData = formatFormObj($(this).serializeArray()); 
     event.preventDefault();
     runFinalComputation(userData);
     form.addClass("hide");
+    addRefreshButton(resultsContainer);
+
   });
 });
