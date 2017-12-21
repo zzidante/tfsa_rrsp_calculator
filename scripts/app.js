@@ -93,6 +93,7 @@ $(function() {
   };
 
   function addRefreshButton(resultsContainer) {
+    // Reference: https://stackoverflow.com/questions/29884654/button-that-refresh-page-on-click 
     return resultsContainer.append("<div class='btn-div'><input class='btn btn-primary' type='button' value='Make a New Calculation' onClick='window.location.href=window.location.href'></div.>")
   }
 

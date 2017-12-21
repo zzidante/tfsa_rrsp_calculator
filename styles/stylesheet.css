@@ -125,3 +125,8 @@ form h4 {
     background: #624874;
     border-color: #624874;
   }
+
+  .btn-primary:hover {
+    background: #822884;
+    border-color: #624874;
+  }
