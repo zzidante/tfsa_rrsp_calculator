@@ -23,3 +23,10 @@ Users can compare the future savings potential of a TFSA and RRSP to improve dec
   ``` npm install ```
 * Run test script
   ``` npm test ```
+
+## Screenshots
+
+!["Form Page"](tfsa_rrsp_calculator/screenshots/TFSA, RRSP Comparison Calculator.png)
+
+
+
