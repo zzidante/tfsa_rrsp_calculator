@@ -67,7 +67,7 @@ $(function() {
     if (objKey === 'yearsToInvest') {
       return "Years investing: ";
     } else if (objKey === 'depositAmount') {
-      return "Your original RRSP & (afer-tax) TFSA deposit is $";
+      return "Your original RRSP & (after-tax) TFSA deposit is $";
     } else if (objKey === 'tfsaDeposit') {
       return "To match your RRSP contribution, your total TFSA deposit (before tax deduction) is $";
     } else if (objKey === 'fvTfsa') {
