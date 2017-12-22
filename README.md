@@ -26,7 +26,7 @@ Users can compare the future savings potential of a TFSA and RRSP to improve dec
 
 ## Screenshots
 
-!["Form Page"](tfsa_rrsp_calculator/screenshots/TFSA, RRSP Comparison Calculator.png)
+!["Form Page"](https://github.com/zzidante/tfsa_rrsp_calculator/blob/master/screenshots/TFSA,%20RRSP%20Comparison%20Calculator.png)
 
 
 
