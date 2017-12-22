@@ -130,9 +130,9 @@ $(function() {
   };
 
   // form handling
-  form.submit(function() {
+  form.submit(function(e) {
     var userData = formatFormObj($(this).serializeArray()); 
-    event.preventDefault();
+    e.preventDefault();
     runFinalComputation(userData);
     form.addClass("hide");
     addRefreshButton(resultsContainer);
