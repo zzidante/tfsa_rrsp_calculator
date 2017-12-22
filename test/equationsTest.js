@@ -5,7 +5,7 @@ const equations = __equations;
 // Mocha does not like floats and will coerce them into whole numbers when calculating. Upon receiving a float it
 // parses it as a string. My hypothesis is that this occurs during requiring the module because it may encode it for tranfer.
 // Corrected this in-app by parseFloat(answer) of my function returns, ensuring accuracy. Kept string form in testing to
-// prevent loss of decimal places.
+// prevent loss of decimal places by number coercion.
 
 describe('Equations', function(){
   describe('afterTaxDeposit', function() {
