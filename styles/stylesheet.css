@@ -40,6 +40,14 @@ form h4 {
   text-align: center;
 }
 
+section h4 {
+  margin: 0 auto;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: lightslategray 1px solid;
+  background: lavender;
+}
+
 #financial-calculator .form-row div:nth-child(1) {
   margin-left: 5px;
 }
@@ -99,12 +107,12 @@ form h4 {
   width: 50%;  
 }
 
-.finance-calc-result {  
-  text-align: center;
+.finance-calc-result:nth-child(2) {  
+  margin-top: 20px;
 }
 
-.finance-calc-result:first-child {  
-  margin-top: 20px;
+.finance-calc-result {  
+  text-align: center;
 }
 
 .refresh-btn {

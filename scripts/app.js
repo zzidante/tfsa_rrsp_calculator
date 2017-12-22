@@ -91,7 +91,7 @@ $(function() {
     var taxRrsp = userInfo.taxRrsp;
     var fvTfsaTotalPrompt = userInfo.fvTfsaTotalPrompt;
 
-    resultsContainer
+    return resultsContainer
       .append(yearsToInvest)
       .append(deposit)
       .append(tfsaDeposit)
