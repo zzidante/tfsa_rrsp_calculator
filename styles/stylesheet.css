@@ -91,6 +91,26 @@ form h4 {
   margin: 30px 0;
 }
 
+#results-container {
+  margin: 10px auto ;  
+  background: ghostwhite;
+  border: lightslategray 1px solid;
+  border-radius: 6px;
+  width: 50%;  
+}
+
+.finance-calc-result {  
+  text-align: center;
+}
+
+.finance-calc-result:first-child {  
+  margin-top: 20px;
+}
+
+.refresh-btn {
+  margin-bottom: 20px;   
+}
+
 .fa {
   font-size: 1em;
   color: rgb(125, 0, 136);
@@ -103,10 +123,6 @@ form h4 {
 .btn-div {
   display: flex;
   justify-content: center;
-}
-
-.finance-calc-result {
-  text-align: center; 
 }
 
 .hide {
