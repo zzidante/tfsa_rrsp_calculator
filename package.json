@@ -1,7 +1,7 @@
 {
   "name": "rrsp_tfsa_calculator",
   "version": "1.0.0",
-  "description": "A simple TFSA and RRSP calculator",
+  "description": "A simple TFSA and RRSP comparison calculator",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
