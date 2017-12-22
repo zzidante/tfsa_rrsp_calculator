@@ -106,7 +106,7 @@ $(function() {
     var userInfo = {};
     $.each(user, function(key, value) {
       if (lookupKeyValueResponse(key)) {
-        userInfo[key] = ('<p class="finance-calc-result">' + lookupKeyValueResponse(key) + value + '</p>');
+        userInfo[key] = ('<p class="finance-calc-result">' + lookupKeyValueResponse(key) + '<strong>' + value + '</strong>' + '</p>');
       }
     });
     renderResults(userInfo);
