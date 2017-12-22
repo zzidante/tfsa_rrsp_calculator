@@ -37,7 +37,11 @@ $(function() {
     return formattedObj;
   };
 
-  // executables for computations
+  function decimalToWholeNum(num) {
+    return Math.round(num * 100);
+  }
+
+  // Computations from equations library
   function updateTfsaDeposit(user) {
     return parseFloat(equations.afterTaxDeposit(user.depositAmount, user.marginalTaxRate));
   };
@@ -58,13 +62,14 @@ $(function() {
     return parseFloat(equations.getRrspAfterTaxFv(user.fvRrsp, user.retireTaxRate));
   };
 
+    // jQuery response builders
   function lookupKeyValueResponse(objKey) {
     if (objKey === 'yearsToInvest') {
       return "Years investing: ";
     } else if (objKey === 'depositAmount') {
-      return "Your original RRSP deposit is $";
+      return "Your original RRSP & (afer-tax) TFSA deposit is $";
     } else if (objKey === 'tfsaDeposit') {
-      return "To match your RRSP contribution, your total TFSA deposit (before tax deducation) is $";
+      return "To match your RRSP contribution, your total TFSA deposit (before tax deduction) is $";
     } else if (objKey === 'fvTfsa') {
       return "The Future Value of your TFSA is $";
     } else if (objKey === 'fvRrsp') {
@@ -80,6 +85,13 @@ $(function() {
     }
   }
 
+  function buildUserInputDisplay(yearsToInvest, marginalTaxRate, retireTaxRate, inflationRate) {
+    return ("<p class='finance-calc-result'><strong>Rates:</strong>" + 
+      " Current Tax Rate: <strong>" + decimalToWholeNum(marginalTaxRate) + 
+      "%</strong> Retirement Tax Rate: <strong>" + decimalToWholeNum(retireTaxRate) +
+      "%</strong> Inflation Rate: <strong>" + decimalToWholeNum(inflationRate) + "</strong>%" + "<p/>")
+  }
+
   // jQuery executables
   function renderResults(userInfo) {
     var deposit = userInfo.depositAmount;
@@ -91,7 +103,10 @@ $(function() {
     var taxRrsp = userInfo.taxRrsp;
     var fvTfsaTotalPrompt = userInfo.fvTfsaTotalPrompt;
 
+    console.log(userInfo);
+
     return resultsContainer
+      .append(buildUserInputDisplay(userInfo.yearsToInvest, userInfo.marginalTaxRate, userInfo.retireTaxRate, userInfo.inflationRate))
       .append(yearsToInvest)
       .append(deposit)
       .append(tfsaDeposit)
@@ -106,7 +121,9 @@ $(function() {
     var userInfo = {};
     $.each(user, function(key, value) {
       if (lookupKeyValueResponse(key)) {
-        userInfo[key] = ('<p class="finance-calc-result">' + lookupKeyValueResponse(key) + '<strong>' + value + '</strong>' + '</p>');
+        userInfo[key] = ("<p class='finance-calc-result'>" + lookupKeyValueResponse(key) + '<strong>' + value + '</strong>' + '</p>');
+      } else {
+        userInfo[key] = value;
       }
     });
     renderResults(userInfo);
@@ -117,7 +134,7 @@ $(function() {
     return resultsContainer.append("<div class='btn-div'><input class='btn btn-primary refresh-btn' type='button' value='Make a New Calculation' onClick='window.location.href=window.location.href'></div.>");
   }
 
-  // run operations in order...
+  // save computations to user's input object & render it to UI
   function runFinalComputation(user) {
     updateAccount(user, "tfsaDeposit", updateTfsaDeposit(user));
     updateAccount(user, "fvTfsa", getFvTfsa(user));
