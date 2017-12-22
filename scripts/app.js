@@ -3,6 +3,7 @@
 var equations = __equations;
 
 $(function() {
+  // all DOM objects to be manipulated
   var form = $('#financial-calculator');  
   var formButton = $('#financial-calculator-btn');
   var resultsContainer = $('#results-container');
@@ -57,7 +58,6 @@ $(function() {
     return parseFloat(equations.getRrspAfterTaxFv(user.fvRrsp, user.retireTaxRate));
   };
 
-  // jQuery executables
   function lookupKeyValueResponse(objKey) {
     if (objKey === 'yearsToInvest') {
       return "Years investing: ";
@@ -80,6 +80,7 @@ $(function() {
     }
   }
 
+  // jQuery executables
   function renderResults(userInfo) {
     var deposit = userInfo.depositAmount;
     var yearsToInvest = userInfo.yearsToInvest;
@@ -99,8 +100,6 @@ $(function() {
       .append(taxRrsp)
       .append(afterTaxFvRrsp)
       .append(fvTfsaTotalPrompt);
-
-
   };
 
   function renderAllInformation(user) {
@@ -115,7 +114,7 @@ $(function() {
 
   function addRefreshButton(resultsContainer) {
     // Reference: https://stackoverflow.com/questions/29884654/button-that-refresh-page-on-click 
-    return resultsContainer.append("<div class='btn-div'><input class='btn btn-primary' type='button' value='Make a New Calculation' onClick='window.location.href=window.location.href'></div.>")
+    return resultsContainer.append("<div class='btn-div'><input class='btn btn-primary' type='button' value='Make a New Calculation' onClick='window.location.href=window.location.href'></div.>");
   }
 
   // run operations in order...
